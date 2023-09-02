@@ -1,0 +1,246 @@
+// themes
+$buttonThemes: (
+  major: (
+    color: $white,
+    hover-color: $white,
+    background-color: $bronze-main,
+    hover-background-color: $black,
+    disabled-background-color: $gray-disabled,
+    disabled-font-color: $gray-light,
+    border-color: transparent,
+    outline-border-color: $pink-main,
+    outline-background-color: $white,
+    outline-color: $pink-main,
+    outline-hover-color: $black,
+    outline-hover-border-color: $black,
+    outline-hover-background-color: $white,
+    outline-disabled-background-color: $gray-disabled,
+    outline-disabled-border-color: transparent,
+    arrow-color: $white,
+    arrow-disabled-color: $gray-light,
+    arrow-outline-color: $pink-main,
+    arrow-outline-hover-color: $black,
+  ),
+  secondary: (
+    color: $white,
+    hover-color: $white,
+    background-color: $green-dark,
+    hover-background-color: $brown-light,
+    disabled-background-color: $gray-disabled,
+    disabled-font-color: $gray-light,
+    border-color: transparent,
+    outline-border-color: $black,
+    outline-background-color: $white,
+    outline-color: $black,
+    outline-hover-color: $pink-main,
+    outline-hover-border-color: $pink-main,
+    outline-hover-background-color: $white,
+    outline-disabled-background-color: $gray-disabled,
+    outline-disabled-border-color: transparent,
+    arrow-color: $white,
+    arrow-disabled-color: $gray-light,
+    arrow-outline-color: $pink-main,
+    arrow-outline-hover-color: $black,
+  ),
+);
+
+// 目前桌機跟手機樣式一樣，但還是先把變數列出來
+// sizes
+$sizes: (
+  sm: (
+    font-size: 14px,
+    mobile-font-size: 14px,
+    min-width: 100px,
+    mobile-min-width: 100px,
+    min-height: 30px,
+    mobile-min-height: 30px,
+    padding-horizontal: 20px,
+    mobile-padding-horizontal: 16px,
+  ),
+  md: (
+    font-size: 14px,
+    mobile-font-size: 14px,
+    min-width: 100px,
+    mobile-min-width: 100px,
+    min-height: 38px,
+    mobile-min-height: 38px,
+    padding-horizontal: 20px,
+    mobile-padding-horizontal: 12px,
+  ),
+  lg: (
+    font-size: 14px,
+    mobile-font-size: 14px,
+    min-width: 136px,
+    mobile-min-width: 136px,
+    min-height: 42px,
+    mobile-min-height: 42px,
+    padding-horizontal: 30px,
+    mobile-padding-horizontal: 30px,
+  ),
+  full: (
+    font-size: 18px,
+    mobile-font-size: 20px,
+    min-width: 100%,
+    mobile-min-width: 100%,
+    min-height: 52px,
+    mobile-min-height: 40px,
+  ),
+);
+
+.button-wrapper {
+  height: fit-content;
+  cursor: pointer !important;
+
+  &:hover .button {
+    transition: 0.3s;
+
+    @each $theme, $styles in $buttonThemes {
+      &[data-theme="#{$theme}"] {
+        color: map-get($styles, hover-color);
+        background-color: map-get($styles, hover-background-color);
+      }
+
+      &[data-is-outline="true"] {
+        &[data-theme="#{$theme}"] {
+          color: map-get($styles, outline-hover-color);
+          background-color: map-get($styles, outline-hover-background-color);
+          border: 1px solid map-get($styles, outline-hover-border-color);
+        }
+      }
+    }
+  }
+
+  &:hover .button-arrow {
+    @each $theme, $styles in $buttonThemes {
+      &[data-is-outline="true"] {
+        &[data-theme="#{$theme}"] {
+          fill: map-get($styles, arrow-outline-hover-color);
+        }
+      }
+    }
+  }
+
+  .button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 52px;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+    }
+
+    &-arrow {
+      min-width: 24px;
+      height: 24px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &[data-size="xs"] {
+        min-width: 20px;
+        height: 20px;
+      }
+
+      & svg {
+        min-width: inherit;
+        height: inherit;
+      }
+    }
+
+    @each $theme, $styles in $buttonThemes {
+      &[data-theme="#{$theme}"] {
+        color: map-get($styles, color);
+        background-color: map-get($styles, background-color);
+        border: 1px solid map-get($styles, border-color);
+
+        @each $theme, $styles in $buttonThemes {
+          &[data-theme="#{$theme}"] {
+            fill: map-get($styles, arrow-color);
+
+            &:disabled {
+              fill: map-get($styles, arrow-disabled-color);
+            }
+
+            &[data-is-outline="true"] {
+              fill: map-get($styles, arrow-outline-color);
+
+              &:disabled {
+                background-color: map-get(
+                  $styles,
+                  outline-disabled-background-color
+                );
+                fill: map-get($styles, arrow-disabled-color);
+              }
+            }
+          }
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          color: map-get($styles, disabled-font-color);
+          background-color: map-get($styles, disabled-background-color);
+        }
+      }
+    }
+
+    @each $size, $styles in $sizes {
+      &[data-size="#{$size}"] {
+        height: map-get($styles, height);
+        padding: 0px map-get($styles, padding-horizontal);
+        font-size: map-get($styles, font-size);
+        font-weight: 400;
+        line-height: initial;
+        min-width: map-get($styles, min-width);
+        min-height: map-get($styles, min-height);
+      }
+
+      @include mobile {
+        &[data-size="#{$size}"] {
+          padding: 0px map-get($styles, mobile-padding-horizontal);
+          font-size: map-get($styles, mobile-font-size);
+          min-width: map-get($styles, mobile-min-width);
+          min-height: map-get($styles, mobile-min-height);
+        }
+      }
+    }
+
+    // outline
+    &[data-is-outline="true"] {
+      @each $theme, $styles in $buttonThemes {
+        &[data-theme="#{$theme}"] {
+          color: map-get($styles, outline-color);
+          background-color: map-get($styles, outline-background-color);
+          border: 1px solid map-get($styles, outline-border-color);
+
+          &:disabled {
+            cursor: not-allowed;
+            color: map-get($styles, disabled-font-color);
+            border-color: map-get($styles, outline-disabled-border-color);
+            background-color: $white;
+          }
+        }
+      }
+    }
+
+    &-loading {
+      min-width: 112px;
+
+      @include mobile {
+        min-width: 88px;
+      }
+
+      & span {
+        font-size: 24px;
+        color: $black;
+
+        @include mobile {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

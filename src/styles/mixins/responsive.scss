@@ -1,0 +1,120 @@
+// mobile 360 - 709
+// tablet 710 - 1023
+// desktop-m 1023 - 1439
+// desktop 1440 up
+// desktop-max 1920 up
+
+// 1920 up
+@mixin desktop-max {
+  @media (min-width: #{$desktop-max-width}) {
+    @content;
+  }
+}
+
+// 1439 以下
+@mixin desktop-m {
+  @media (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+// 1023 以下
+@mixin tablet {
+  @media (max-width: #{$desktop-m-width - 1px}) {
+    @content;
+  }
+}
+
+// 709 以下
+@mixin mobile {
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+// 710 - 1023
+@mixin tablet-only {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-m-width - 1px}) {
+    @content;
+  }
+}
+
+// 1024 - 1439
+@mixin desktop-m-only {
+  @media (min-width: #{$desktop-m-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+// 1024 up
+@mixin desktop-only {
+  @media (min-width: #{$desktop-m-width}) {
+    @content;
+  }
+}
+
+// content container
+@mixin container {
+  // 1440 - 1919
+  width: 100%;
+  max-width: 1440px;
+  margin: 0px auto;
+  padding: 0px 120px;
+  display: inherit;
+  flex-direction: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+
+  @include desktop-max {
+    max-width: 1920px;
+    padding: 0px 270px;
+  }
+
+  @include desktop-m {
+    max-width: 1260px;
+    padding: 0px 30px;
+  }
+
+  @include tablet {
+    max-width: 960px;
+    padding: 0px 20px;
+  }
+
+  @include mobile {
+    max-width: 100%;
+    padding: 0px 10px;
+  }
+}
+
+// header 跟 footer 用的 container
+@mixin container-hf {
+  // 1440 - 1919
+  width: 100%;
+  max-width: 1700px;
+  margin: 0px auto;
+  padding: 0px 40px;
+  display: inherit;
+  flex-direction: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+
+  @include desktop-max {
+    max-width: 1980px;
+    padding: 0px 40px;
+  }
+
+  @include desktop-m {
+    max-width: 100%;
+    padding: 0px 40px;
+  }
+
+  @include tablet {
+    max-width: 100%;
+    padding: 0px 20px;
+  }
+
+  @include mobile {
+    max-width: 100%;
+    padding: 0px 12px;
+  }
+}

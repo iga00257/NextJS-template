@@ -1,0 +1,7 @@
+@mixin locale($locales) {
+  @each $locale in $locales {
+    &:lang(#{$locale}) {
+      @content;
+    }
+  }
+}

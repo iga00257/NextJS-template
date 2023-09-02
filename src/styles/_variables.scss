@@ -1,0 +1,78 @@
+// shop color
+$blue-main: #6458c4;
+
+$purple-middle: #be42b5;
+
+$bronze-main: #bb9a88;
+
+$pink-main: #ff3c78;
+$pink-light: #ff98b8;
+$pink-background: #ffe2eb;
+
+$orange-middle: #ff6b4d;
+$orange-main: #ff9428;
+
+$red-error: #e60019;
+
+$green-check: #64be3c;
+$green-background: #e6f2e0;
+$green-dark: #979d6e;
+
+$brown-main: #b5a8a0;
+$brown-light: #cac6bd;
+
+$black: #080808;
+
+$gray-dark: #333333;
+$gray-disabled: #eaeaea;
+$gray: #555555;
+$gray-dim: #777777;
+$gray-light: #aaaaaa;
+$gray-feather: #dddddd;
+$gray-background: #f0f0f0;
+$gray-very-light: #f2f2f2;
+$white: #ffffff;
+
+$gold: #ffdebc;
+
+$header-index: 9999;
+$page-loading-index: 99999;
+$room-interact-index: 12;
+$room-like-button-desktop: 1;
+$emoji-animation-area-index: -1;
+$room-mic-request-index: 11;
+$room-animation-connecting-area: 1;
+$room-animation-mobile-controll-item: 13;
+$room-phone-action: 15;
+$room-cover: 13;
+
+$fixed-player-index: 9999;
+$fixed-player-close-index: 25;
+$fixed-player-enter-index: 16;
+$fixed-player-end-index: 20;
+$fixed-player-end-content: 30;
+
+$player-loading: 2;
+
+// Responsive
+// mobile 360 - 767
+// tablet 710 - 1023
+// desktop-m 1023 - 1439
+// desktop 1440 up
+$mobile-width: 360px;
+$tablet-width: 710px; // 平板已改為 710-1023 // Reference:// https://www.figma.com/file/TfgiHscU8sYfk3DnN8LoLG/sample-WEB?node-id=0%3A1&t=JvMmTTozkrYicr7Y-0
+$desktop-m-width: 1024px;
+$desktop-width: 1440px;
+$desktop-max-width: 1920px;
+
+$header-height: 72px; // header
+$header-mobile-height: 80px; // header mobile
+$footer-height: 168px;
+$footer-mobile-height: 208px;
+
+$chat-input-height: 40px;
+$chat-input-mobile-height: 36px;
+
+$latin-system: en-us, en-hk, tr-tr, id-id, es-pe;
+$chinese-system: zh-tw, zh-hk;
+$english-system: en-us, en-hk;
